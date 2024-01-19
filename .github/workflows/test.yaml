@@ -33,6 +33,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
 self:
+  depends: jobs
   buildapp:
     runs-on: self-hosted
     steps:
