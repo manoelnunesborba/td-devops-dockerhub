@@ -33,7 +33,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
   self:
-    depends: super-lint
+    needs: super-lint
     name: Self-hosted runner
     runs-on: self-hosted
     steps:
