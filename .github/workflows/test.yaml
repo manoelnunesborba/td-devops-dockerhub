@@ -1,6 +1,5 @@
 on: push
 jobs:
-  name: job1
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
 self:
-  needs: job1
+  needs: jobs
   buildapp:
     runs-on: self-hosted
     steps:
