@@ -35,10 +35,9 @@ jobs:
   self:
     depends: super-lint
     name: Self-hosted runner
-    buildapp:
-      runs-on: self-hosted
-      steps:
-        - name: docker pull
-          run: docker pull ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
-        - name: docker run
-          run: docker run -d -p 5005:80 ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
+    runs-on: self-hosted
+    steps:
+      - name: docker pull
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
+      - name: docker run
+        run: docker run -d -p 5005:80 ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
