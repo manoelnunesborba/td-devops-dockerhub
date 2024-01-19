@@ -32,8 +32,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
-self:
-  needs: jobs
+jobs:
   buildapp:
     runs-on: self-hosted
     steps:
