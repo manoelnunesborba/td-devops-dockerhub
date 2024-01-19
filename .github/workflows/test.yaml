@@ -38,6 +38,6 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: docker pull
-        run: docker pull ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname --platform linux/amd64
       - name: docker run
         run: docker run -d -p 5005:80 ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
