@@ -1,6 +1,7 @@
 name: Super-Linter
 on: push
 jobs:
+  name: job1
   super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
@@ -33,3 +34,12 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
+jobs:
+  needs: job1
+  name: job2
+  runs-on: self-hosted
+  steps:
+    - name: docker pull
+      run: docker pull ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
+    - name: docker run
+      run: docker run -d -p 5005:80 ${{ secrets.DOCKER_USERNAME }}/td-devops-dockerhub:tagname
